@@ -1,0 +1,11 @@
+sudo docker container run --detach --publish 8088:80 --name MojKontener diamol/ch02-hello-diamol-web
+sudo docker exec --interactive --tty MojKontener /bin/sh
+cd htdocs
+ed index.html
+,p
+4s#Hello from Chapter 2!#Witaj! Z tej strony Kamil Paradowski
+7s#This is <a href="https://www.manning.com/books/learn-docker-in-a-month-of-lunches">Learn Docker in a Month of Lunches</a>.#Zapraszam do sprawdzenia mojego konta na <a href="https://github.com/ParadowskiKamil">GitHub</a>
+,p
+w
+q
+exit
