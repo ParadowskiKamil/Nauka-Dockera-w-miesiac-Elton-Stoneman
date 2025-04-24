@@ -1,0 +1,10 @@
+sudo docker image pull diamol/ch03-lab
+sudo docker container run --interactive --tty --name MojKontener diamol/ch03-lab /bin/sh
+cat ch03.txt
+echo Kamil >> ch03.txt
+cat ch03.txt
+exit
+sudo docker container commit MojKontener rozdzial_3_laboratorium
+sudo docker container run --interactive --tty rozdzial_3_laboratorium /bin/sh
+cat ch03.txt
+exit
