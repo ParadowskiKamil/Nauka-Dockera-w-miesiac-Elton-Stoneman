@@ -1,0 +1,5 @@
+sudo docker image build -t oryginalny_obraz -f OryginalnyDockerfile .
+sudo docker container run -d -p 8080:80 oryginalny_obraz
+sudo docker image build -t zoptymalizowany_obraz -f ZoptymalizowanyDockerfile .
+sudo docker container run -d -p 8081:80 zoptymalizowany_obraz
+sudo docker image ls
