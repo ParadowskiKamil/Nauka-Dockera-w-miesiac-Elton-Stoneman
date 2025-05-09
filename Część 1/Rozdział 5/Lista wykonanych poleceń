@@ -1,0 +1,17 @@
+sudo docker container run -d -p 5000:5000 --restart always diamol/registry
+echo $'\n127.0.0.1 serwer.rejestru' | sudo tee -a /etc/hosts
+Utworzenie pliku daemon.js w katalogu /etc/docker i dodanie do niego odpowiedniego wpisu do listy dozwolonych niebezpiecznych rejestrów
+sudo service docker restart
+cd /home/kamil/Pobrane/docker-w-miesiac/diamol/ch04/exercises/image-gallery
+sudo docker image build -t image-gallery .
+sudo docker image tag image-gallery serwer.rejestru:5000/gallery/ui:WersjaPierwsza
+sudo docker image tag image-gallery serwer.rejestru:5000/gallery/ui:WersjaDruga
+sudo docker image tag image-gallery serwer.rejestru:5000/gallery/ui:WersjaTrzecia
+sudo docker image tag image-gallery serwer.rejestru:5000/gallery/ui:WersjaCzwarta
+sudo docker image tag image-gallery serwer.rejestru:5000/gallery/ui:WersjaPiata
+curl -s http://serwer.rejestru:5000/v2/gallery/ui/tags/list
+sudo docker image push --all-tags serwer.rejestru:5000/gallery/ui
+curl -s http://serwer.rejestru:5000/v2/gallery/ui/tags/list
+curl --head http://serwer.rejestru:5000/v2/gallery/ui/manifests/WersjaTrzecia -H 'Accept: application/vnd.docker.distribution.manifest.v2+json'
+curl -X DELETE http://serwer.rejestru:5000/v2/gallery/ui/manifests/sha256:383c55f8eeb544299535c87435597af4fbcfac95c05971a3ee9acac084a1e712
+curl -s http://serwer.rejestru:5000/v2/gallery/ui/tags/list
