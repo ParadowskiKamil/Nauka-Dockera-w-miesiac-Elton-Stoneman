@@ -1,0 +1,10 @@
+sudo docker container run --name OryginalnaApka -d -p 966:80 diamol/ch06-lab
+sudo docker exec -it OryginalnaApka sh
+ls
+cat appsettings.json
+exit
+Utworzenie nowego pliku konfiguracyjnego appsettings.json w celu zapisania zadań w innym pliku bazodanowym
+sudo docker volume create ListaZadan
+sudo docker container run --name ZmienionaApka -d -p 1410:80 --mount type=bind,source=$(pwd)/appsettings.json,target=/app/appsettings.json,readonly --volume ListaZadan:/data diamol/ch06-lab
+sudo docker remove ZmienionaApka --force
+sudo docker container run --name ZmienionaApka -d -p 1410:80 --mount type=bind,source=$(pwd)/appsettings.json,target=/app/appsettings.json,readonly --volume ListaZadan:/data diamol/ch06-lab
