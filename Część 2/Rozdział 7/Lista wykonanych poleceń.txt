@@ -1,0 +1,16 @@
+sudo docker compose up -d
+sudo docker container ls
+sudo docker exec -it PostgreSQL sh
+ls
+cd var
+ls
+cd lib
+ls
+cd postgresql
+ls
+cd data
+ls
+exit
+sudo systemctl restart docker
+sudo docker compose down
+sudo docker compose up -d

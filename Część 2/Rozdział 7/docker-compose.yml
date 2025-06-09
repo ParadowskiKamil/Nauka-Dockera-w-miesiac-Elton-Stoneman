@@ -1,0 +1,39 @@
+services:
+  database:
+    image: diamol/postgres:11.5
+    container_name: PostgreSQL
+    restart: unless-stopped
+    ports:
+      - "2025:5432"
+    networks:
+      - application-network
+    environment:
+      - PGDATA=/var/lib/postgresql/data
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+  application:
+    image: diamol/ch06-todo-list
+    container_name: ListaZadan
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    environment:
+      - Database:Provider=Postgres
+    depends_on:
+      - database
+    networks:
+      - application-network
+    secrets:
+      - source: postgres-connection
+        target: /app/config/secrets.json
+
+networks:
+  application-network:
+
+secrets:
+  postgres-connection:
+    file: ./postgresConfig.json
+
+volumes:
+  postgres-data:
