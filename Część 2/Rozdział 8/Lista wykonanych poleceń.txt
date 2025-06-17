@@ -1,0 +1,6 @@
+sudo docker build -t aplikacja .
+sudo docker run aplikacja
+sudo docker container ls
+sudo docker container ls
+sudo docker container ls
+sudo docker container ls --all
