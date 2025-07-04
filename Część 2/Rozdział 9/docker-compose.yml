@@ -1,0 +1,26 @@
+services:
+  to-do-list-application:
+    image: diamol/ch09-todo-list
+    ports:
+      - "8000:80"
+    networks:
+      - application-network
+
+  prometheus:
+    image: kamilparadowski/prometheus
+    ports:
+      - "9090:9090"
+    networks:
+      - application-network
+
+  grafana:
+    image: kamilparadowski/grafana
+    ports:
+      - "3000:3000"
+    depends_on:
+      - prometheus
+    networks:
+      - application-network
+
+networks:
+  application-network:

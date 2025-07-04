@@ -1,0 +1,9 @@
+cd grafana
+sudo docker build -t kamilparadowski/grafana .
+cd ../prometheus
+sudo docker build -t kamilparadowski/prometheus .
+sudo docker login --username kamilparadowski
+sudo docker push kamilparadowski/grafana
+sudo docker push kamilparadowski/prometheus
+cd ..
+sudo docker compose up -d
