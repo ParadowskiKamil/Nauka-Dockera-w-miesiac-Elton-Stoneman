@@ -1,0 +1,30 @@
+services:
+  to-do-list-application:
+    image: diamol/ch06-todo-list:latest
+    ports: !override
+      - 8080:80
+    environment:
+      - Database:Provider=Postgres
+    depends_on:
+      - database
+    secrets:
+      - source: postgres-connection
+        target: /app/config/secrets.json
+
+  database:
+    image: diamol/postgres:11.5
+    ports:
+      - "5050:5432"
+    networks:
+      - application-network
+    environment:
+      - PGDATA=/var/lib/postgresql/data
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+secrets:
+  postgres-connection:
+    file: ./postgresConfig.json
+
+volumes:
+  postgres-data:

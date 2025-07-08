@@ -1,0 +1,12 @@
+services:
+  to-do-list-application:
+    image: diamol/ch06-todo-list:v2
+    ports:
+      - 8089:80
+    environment:
+      - Database:Provider=Sqlite
+    networks:
+      - application-network
+
+networks:
+  application-network:
