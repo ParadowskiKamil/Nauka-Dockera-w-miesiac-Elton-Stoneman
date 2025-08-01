@@ -1,0 +1,7 @@
+sudo docker compose -f docker-compose.yml -f docker-compose-linux.yml up -d
+cd ../../..
+git add -A
+git commit -m "Wykonano laboratorium w ramach rozdziału numer 11"
+git remote set-url origin http://localhost:3000/KamilParadowski/diamol.git
+git branch master
+git push -u origin master

@@ -1,0 +1,25 @@
+services:
+  gogs:
+    image: diamol/gogs:2e-linux-amd64
+    ports:
+      - "3000:3000"
+    networks:
+      - infrastructure
+
+  registry.local:
+    image: diamol/registry:2e-linux-amd64
+    ports:
+      - "5010:5000"
+    networks:
+      - infrastructure
+
+  jenkins:
+    image: diamol/jenkins:2e-linux-amd64
+    ports:
+      - "8080:8080"
+    networks:
+      - infrastructure
+
+networks:
+  infrastructure:
+    name: build-infrastructure

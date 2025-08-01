@@ -1,0 +1,264 @@
+Started by an SCM change
+Checking out git http://gogs:3000/KamilParadowski/diamol.git into /var/jenkins_home/workspace/ToDoList@script/10883bb56e97fda441400272ad2ddf25a87027740bf16f6e612c49cfc81debee to read Część 2/Rozdział 11/Jenkinsfile
+The recommended git tool is: NONE
+No credentials specified
+Cloning the remote Git repository
+Cloning repository http://gogs:3000/KamilParadowski/diamol.git
+ > git init /var/jenkins_home/workspace/ToDoList@script/10883bb56e97fda441400272ad2ddf25a87027740bf16f6e612c49cfc81debee # timeout=10
+Fetching upstream changes from http://gogs:3000/KamilParadowski/diamol.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.45.2'
+ > git fetch --tags --force --progress -- http://gogs:3000/KamilParadowski/diamol.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin.url http://gogs:3000/KamilParadowski/diamol.git # timeout=10
+ > git config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
+Avoid second fetch
+Seen branch in repository origin/master
+Seen 1 remote branch
+ > git show-ref --tags -d # timeout=10
+Checking out Revision 1de25bb5e4aab9b06e779d8ea90ebdda8b55671a (origin/master)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 1de25bb5e4aab9b06e779d8ea90ebdda8b55671a # timeout=10
+Commit message: "Wykonano laboratorium w ramach rozdziału numer 11"
+First time build. Skipping changelog.
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins
+ in /var/jenkins_home/workspace/ToDoList
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Checkout SCM)
+[Pipeline] checkout
+The recommended git tool is: NONE
+No credentials specified
+Cloning the remote Git repository
+Cloning repository http://gogs:3000/KamilParadowski/diamol.git
+ > git init /var/jenkins_home/workspace/ToDoList # timeout=10
+Fetching upstream changes from http://gogs:3000/KamilParadowski/diamol.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.45.2'
+ > git fetch --tags --force --progress -- http://gogs:3000/KamilParadowski/diamol.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin.url http://gogs:3000/KamilParadowski/diamol.git # timeout=10
+ > git config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
+Avoid second fetch
+Seen branch in repository origin/master
+Seen 1 remote branch
+ > git show-ref --tags -d # timeout=10
+Checking out Revision 1de25bb5e4aab9b06e779d8ea90ebdda8b55671a (origin/master)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 1de25bb5e4aab9b06e779d8ea90ebdda8b55671a # timeout=10
+Commit message: "Wykonano laboratorium w ramach rozdziału numer 11"
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Build)
+[Pipeline] dir
+Running in /var/jenkins_home/workspace/ToDoList/Część 2/Rozdział 11
+[Pipeline] {
+[Pipeline] sh
++ chmod +x ./ci/01-build.bat
+[Pipeline] sh
++ ./ci/01-build.bat
+#0 building with "default" instance using docker driver
+
+#1 [todo-web internal] load build definition from Dockerfile
+#1 transferring dockerfile: 381B done
+#1 DONE 0.0s
+
+#2 [todo-web internal] load metadata for docker.io/diamol/dotnet-sdk:latest
+#2 DONE 1.6s
+
+#3 [todo-web internal] load metadata for docker.io/diamol/dotnet-aspnet:latest
+#3 DONE 4.5s
+
+#4 [todo-web internal] load .dockerignore
+#4 transferring context: 2B done
+#4 DONE 0.0s
+
+#5 [todo-web stage-1 1/3] FROM docker.io/diamol/dotnet-aspnet:latest@sha256:d34a231013982f446e54fe15c036bf5e8585ae8e95ff1fd3e0c374a40d3f60f7
+#5 resolve docker.io/diamol/dotnet-aspnet:latest@sha256:d34a231013982f446e54fe15c036bf5e8585ae8e95ff1fd3e0c374a40d3f60f7 0.1s done
+#5 DONE 0.1s
+
+#6 [todo-web builder 1/6] FROM docker.io/diamol/dotnet-sdk:latest@sha256:a78173a9dbd3e6b3b2af1eadad3edd6e8ef7b2801f3cda405928e5da155c7039
+#6 resolve docker.io/diamol/dotnet-sdk:latest@sha256:a78173a9dbd3e6b3b2af1eadad3edd6e8ef7b2801f3cda405928e5da155c7039 0.1s done
+#6 DONE 0.1s
+
+#7 [todo-web internal] load build context
+#7 transferring context: 998.87kB 0.0s done
+#7 DONE 0.0s
+
+#8 [todo-web stage-1 2/3] WORKDIR /app
+#8 CACHED
+
+#9 [todo-web builder 5/6] COPY src/ .
+#9 CACHED
+
+#10 [todo-web builder 4/6] RUN dotnet restore
+#10 CACHED
+
+#11 [todo-web builder 6/6] RUN dotnet publish -c Release -o /out ToDoList.csproj
+#11 CACHED
+
+#12 [todo-web builder 2/6] WORKDIR /src
+#12 CACHED
+
+#13 [todo-web builder 3/6] COPY src/ToDoList.csproj .
+#13 CACHED
+
+#14 [todo-web stage-1 3/3] COPY --from=builder /out/ .
+#14 CACHED
+
+#15 [todo-web] exporting to image
+#15 exporting layers done
+#15 writing image sha256:9a51a562fe320343b67dbf3bfea7fdbc6f2f119bd04b414b7a4d01393f0f9671 done
+#15 naming to registry.local:5010/diamol/ch11-todo-list:1 0.0s done
+#15 DONE 0.0s
+[Pipeline] }
+[Pipeline] // dir
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Push)
+[Pipeline] dir
+Running in /var/jenkins_home/workspace/ToDoList/Część 2/Rozdział 11
+[Pipeline] {
+[Pipeline] sh
++ chmod +x ./ci/02-push.bat
+[Pipeline] sh
++ ./ci/02-push.bat
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: 45097411d40e Preparing 
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: c63377bf5590 Preparing 
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: 59d0d67c3529 Preparing 
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: 6ec5f54d57df Preparing 
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: ba77a4b04402 Preparing 
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: 29d90ae5bfcf Preparing 
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: f2cb0ecef392 Preparing 
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: 29d90ae5bfcf Waiting 
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: f2cb0ecef392 Waiting 
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: ba77a4b04402 Pushing [=>                                                 ]  46.08kB/2.28MB
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: c63377bf5590 Pushing  1.536kB
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: 45097411d40e Pushing [>                                                  ]  193.9kB/18.47MB
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: 59d0d67c3529 Pushing [>                                                  ]  189.4kB/17.71MB
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: 6ec5f54d57df Pushing [>                                                  ]  549.9kB/76.46MB
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: c63377bf5590 Pushed 
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: 29d90ae5bfcf Pushing [>                                                  ]  431.1kB/41.33MB
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: ba77a4b04402 Pushing [===================================>               ]  1.618MB/2.28MB
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: 59d0d67c3529 Pushing [=====>                                             ]  2.108MB/17.71MB
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: 45097411d40e Pushing [=====>                                             ]  2.174MB/18.47MB
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: ba77a4b04402 Pushing [==================================================>]   2.36MB
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: 6ec5f54d57df Pushing [=>                                                 ]  2.752MB/76.46MB
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: ba77a4b04402 Pushed 
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: 29d90ae5bfcf Pushing [==>                                                ]  2.129MB/41.33MB
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: 59d0d67c3529 Pushing [===========>                                       ]  4.066MB/17.71MB
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: 45097411d40e Pushing [===========>                                       ]  4.156MB/18.47MB
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: f2cb0ecef392 Pushing [>                                                  ]  525.3kB/69.21MB
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: 6ec5f54d57df Pushing [===>                                               ]  4.919MB/76.46MB
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: 29d90ae5bfcf Pushing [=====>                                             ]  4.259MB/41.33MB
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: 59d0d67c3529 Pushing [================>                                  ]  6.005MB/17.71MB
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: 45097411d40e Pushing [===============>                                   ]  5.751MB/18.47MB
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: f2cb0ecef392 Pushing [=>                                                 ]  2.714MB/69.21MB
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: 6ec5f54d57df Pushing [====>                                              ]  7.116MB/76.46MB
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: 45097411d40e Pushing [====================>                              ]  7.521MB/18.47MB
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: 29d90ae5bfcf Pushing [=======>                                           ]   6.39MB/41.33MB
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: 59d0d67c3529 Pushing [======================>                            ]  8.126MB/17.71MB
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: f2cb0ecef392 Pushing [===>                                               ]   4.86MB/69.21MB
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: 6ec5f54d57df Pushing [======>                                            ]  9.306MB/76.46MB
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: 45097411d40e Pushing [=========================>                         ]  9.306MB/18.47MB
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: 59d0d67c3529 Pushing [============================>                      ]  10.27MB/17.71MB
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: 29d90ae5bfcf Pushing [==========>                                        ]   8.52MB/41.33MB
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: f2cb0ecef392 Pushing [=====>                                             ]   7.06MB/69.21MB
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: 6ec5f54d57df Pushing [=======>                                           ]  11.53MB/76.46MB
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: 45097411d40e Pushing [=============================>                     ]  10.88MB/18.47MB
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: 59d0d67c3529 Pushing [==================================>                ]  12.22MB/17.71MB
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: 29d90ae5bfcf Pushing [=============>                                     ]   11.5MB/41.33MB
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: 6ec5f54d57df Pushing [========>                                          ]  13.73MB/76.46MB
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: 45097411d40e Pushing [==================================>                ]  12.86MB/18.47MB
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: f2cb0ecef392 Pushing [======>                                            ]  9.221MB/69.21MB
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: 59d0d67c3529 Pushing [========================================>          ]  14.36MB/17.71MB
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: 29d90ae5bfcf Pushing [=================>                                 ]  14.06MB/41.33MB
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: 45097411d40e Pushing [========================================>          ]  15.05MB/18.47MB
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: f2cb0ecef392 Pushing [========>                                          ]  11.41MB/69.21MB
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: 59d0d67c3529 Pushing [==============================================>    ]  16.46MB/17.71MB
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: 6ec5f54d57df Pushing [==========>                                        ]  15.95MB/76.46MB
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: 29d90ae5bfcf Pushing [====================>                              ]  16.61MB/41.33MB
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: 59d0d67c3529 Pushing [==================================================>]  17.79MB
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: 45097411d40e Pushing [==============================================>    ]  17.02MB/18.47MB
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: f2cb0ecef392 Pushing [=========>                                         ]  13.58MB/69.21MB
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: 6ec5f54d57df Pushing [===========>                                       ]  18.18MB/76.46MB
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: 29d90ae5bfcf Pushing [=======================>                           ]  19.17MB/41.33MB
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: f2cb0ecef392 Pushing [===========>                                       ]  15.75MB/69.21MB
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: 6ec5f54d57df Pushing [=============>                                     ]  20.89MB/76.46MB
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: 29d90ae5bfcf Pushing [==========================>                        ]  21.73MB/41.33MB
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: f2cb0ecef392 Pushing [=============>                                     ]  18.45MB/69.21MB
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: 6ec5f54d57df Pushing [===============>                                   ]  23.09MB/76.46MB
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: 29d90ae5bfcf Pushing [=============================>                     ]  24.71MB/41.33MB
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: 6ec5f54d57df Pushing [================>                                  ]  25.25MB/76.46MB
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: f2cb0ecef392 Pushing [===============>                                   ]  21.11MB/69.21MB
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: 29d90ae5bfcf Pushing [================================>                  ]  27.26MB/41.33MB
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: 45097411d40e Pushing [==================================================>]  18.52MB
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: 59d0d67c3529 Pushed 
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: 45097411d40e Pushed 
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: 6ec5f54d57df Pushing [==================>                                ]  27.98MB/76.46MB
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: f2cb0ecef392 Pushing [================>                                  ]  23.28MB/69.21MB
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: 29d90ae5bfcf Pushing [====================================>              ]  30.25MB/41.33MB
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: f2cb0ecef392 Pushing [==================>                                ]  25.47MB/69.21MB
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: 6ec5f54d57df Pushing [====================>                              ]  30.77MB/76.46MB
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: 29d90ae5bfcf Pushing [=======================================>           ]   32.8MB/41.33MB
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: 6ec5f54d57df Pushing [=====================>                             ]     33MB/76.46MB
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: f2cb0ecef392 Pushing [====================>                              ]  28.15MB/69.21MB
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: 29d90ae5bfcf Pushing [==========================================>        ]  34.92MB/41.33MB
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: f2cb0ecef392 Pushing [=====================>                             ]  30.35MB/69.21MB
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: 6ec5f54d57df Pushing [=======================>                           ]  35.78MB/76.46MB
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: 29d90ae5bfcf Pushing [=============================================>     ]  37.47MB/41.33MB
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: 6ec5f54d57df Pushing [========================>                          ]  37.96MB/76.46MB
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: f2cb0ecef392 Pushing [=======================>                           ]  33.08MB/69.21MB
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: 29d90ae5bfcf Pushing [===============================================>   ]   39.6MB/41.33MB
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: 29d90ae5bfcf Pushing [==================================================>]  41.67MB
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: f2cb0ecef392 Pushing [=========================>                         ]  35.75MB/69.21MB
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: 6ec5f54d57df Pushing [==========================>                        ]  40.73MB/76.46MB
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: 29d90ae5bfcf Pushed 
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: f2cb0ecef392 Pushing [===========================>                       ]  38.48MB/69.21MB
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: 6ec5f54d57df Pushing [============================>                      ]  43.52MB/76.46MB
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: f2cb0ecef392 Pushing [==============================>                    ]  42.25MB/69.21MB
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: 6ec5f54d57df Pushing [=============================>                     ]  45.74MB/76.46MB
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: f2cb0ecef392 Pushing [================================>                  ]  45.51MB/69.21MB
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: 6ec5f54d57df Pushing [================================>                  ]  49.07MB/76.46MB
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: f2cb0ecef392 Pushing [==================================>                ]  47.73MB/69.21MB
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: 6ec5f54d57df Pushing [=================================>                 ]   51.8MB/76.46MB
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: f2cb0ecef392 Pushing [====================================>              ]  49.92MB/69.21MB
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: 6ec5f54d57df Pushing [===================================>               ]  54.48MB/76.46MB
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: f2cb0ecef392 Pushing [=====================================>             ]  52.11MB/69.21MB
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: 6ec5f54d57df Pushing [=====================================>             ]  57.23MB/76.46MB
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: f2cb0ecef392 Pushing [=======================================>           ]  54.83MB/69.21MB
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: 6ec5f54d57df Pushing [=======================================>           ]  60.01MB/76.46MB
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: f2cb0ecef392 Pushing [=========================================>         ]  57.58MB/69.21MB
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: 6ec5f54d57df Pushing [=========================================>         ]   62.8MB/76.46MB
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: f2cb0ecef392 Pushing [===========================================>       ]  60.31MB/69.21MB
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: 6ec5f54d57df Pushing [===========================================>       ]  66.14MB/76.46MB
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: f2cb0ecef392 Pushing [=============================================>     ]   63.5MB/69.21MB
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: 6ec5f54d57df Pushing [=============================================>     ]  69.47MB/76.46MB
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: f2cb0ecef392 Pushing [===============================================>   ]  66.15MB/69.21MB
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: 6ec5f54d57df Pushing [===============================================>   ]  72.19MB/76.46MB
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: f2cb0ecef392 Pushing [==================================================>]  69.35MB
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: 6ec5f54d57df Pushing [=================================================> ]  74.95MB/76.46MB
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: f2cb0ecef392 Pushing [==================================================>]  72.48MB
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: 6ec5f54d57df Pushing [==================================================>]  76.57MB
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: f2cb0ecef392 Pushed 
+ Pushing registry.local:5010/diamol/ch11-todo-list:1: 6ec5f54d57df Pushed 
+[Pipeline] echo
+Pushed to http://registry.local:5010/v2/diamol/ch11-todo-list/tags/list
+[Pipeline] }
+[Pipeline] // dir
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS
