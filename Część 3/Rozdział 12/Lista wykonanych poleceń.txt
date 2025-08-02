@@ -1,0 +1,6 @@
+hostname -I
+sudo docker swarm init --advertise-addr 192.168.0.20
+sudo docker network create --driver overlay numbers-network
+sudo docker service create --detach --name numbers-api --network numbers-network --replicas 1 diamol/ch08-numbers-api:v3
+sudo docker service create --detach --name numbers-web --network numbers-network --publish 10000:80 --replicas 1 diamol/ch08-numbers-web:v3
+sudo docker service ls
