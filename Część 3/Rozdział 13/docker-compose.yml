@@ -1,0 +1,47 @@
+x-cpus: &cpus
+  cpus: "0.50"
+
+x-network: &network
+  networks:
+    - application-network
+
+services:
+  access-log:
+    image: diamol/ch09-access-log
+    deploy:
+      replicas: 3
+      resources:
+        limits:
+          memory: 64M
+          <<: *cpus
+    <<: *network
+
+  image-of-the-day:
+    image: diamol/ch09-image-of-the-day
+    deploy:
+      replicas: 5
+      resources:
+        limits:
+          memory: 300M
+          <<: *cpus
+    ports:
+      - 8088:80
+    <<: *network
+
+  image-gallery:
+    image: diamol/ch09-image-gallery
+    deploy:
+      replicas: 2
+      resources:
+        limits:
+          memory: 64M
+          <<: *cpus
+    ports:
+    - 80:80
+    <<: *network
+    environment:
+      IMAGE_API_URL: "http://192.168.208.87:8088/image"
+      ACCESS_API_URL: "http://192.168.208.87:8088/access-log"
+
+networks:
+  application-network:
