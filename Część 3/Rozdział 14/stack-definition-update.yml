@@ -1,0 +1,9 @@
+services:
+  access-log:
+    image: diamol/ch09-access-log
+
+  image-of-the-day:
+    image: diamol/ch09-image-of-the-day
+
+  image-gallery:
+    image: diamol/ch09-image-gallery

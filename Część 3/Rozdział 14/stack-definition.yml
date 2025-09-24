@@ -7,9 +7,8 @@ x-network: &network
 
 services:
   access-log:
-    image: diamol/ch09-access-log
+    image: diamol/ch04-access-log
     deploy:
-      replicas: 3
       resources:
         limits:
           memory: 64M
@@ -17,27 +16,42 @@ services:
     <<: *network
 
   image-of-the-day:
-    image: diamol/ch09-image-of-the-day
+    image: diamol/ch04-image-of-the-day
     deploy:
-      replicas: 5
+      replicas: 4
       resources:
         limits:
           memory: 300M
           <<: *cpus
+      update_config:
+        parallelism: 2
+        monitor: 90s
+        failure_action: rollback
+        order: start-first
+      rollback_config:
+        parallelism: 4
+        monitor: 0s
+        failure_action: continue
+        order: start-first
     ports:
-      - 8088:80
+      - 8090:80
     <<: *network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:80/image"]
+      interval: 5s
+      timeout: 60s
+      retries: 2
+      start_period: 60s
 
   image-gallery:
-    image: diamol/ch09-image-gallery
+    image: diamol/ch04-image-gallery
     deploy:
-      replicas: 2
       resources:
         limits:
           memory: 64M
           <<: *cpus
     ports:
-      - 80:80
+      - 8000:80
     <<: *network
     environment:
       IMAGE_API_URL: "${IMAGE_API_URL}"

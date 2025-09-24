@@ -1,0 +1,12 @@
+hostname -I
+sudo docker swarm init --advertise-addr 10.75.117.87
+sudo docker stack deploy -c stack-definition.yml Laboratorium14
+sudo docker service ls
+sudo docker stack ps Laboratorium14
+sudo docker service inspect --pretty Laboratorium14_image-of-the-day
+sudo docker compose -f stack-definition.yml -f stack-definition-update.yml config > stack.yml
+Wprowadzenie kilku poprawek manualnych w nowo utworzonym pliku stack.yml
+sudo docker stack deploy -c stack.yml Laboratorium14
+sudo docker service ls
+sudo docker stack ps Laboratorium14
+sudo docker service inspect --pretty Laboratorium14_image-of-the-day
