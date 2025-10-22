@@ -1,0 +1,6 @@
+sudo docker compose -f ./docker-compose.yml -f ./docker-compose-linux.yml up -d
+sudo docker container ls
+sudo docker exec -it d9eeee09454a sh
+ls
+cd certs
+Po uruchomieniu Jenkins widać, że nie działa zgodnie z założeniami zawartymi w książce. Aplikacja zgłasza problemy z niedziałającymi wtyczkami, które wynikają ze zbyt niskiej wersji Jenkins zawartej w obrazie dockerowym. Próba aktualizacji Jenkins kończy się niepowodzeniem. Na innym zrzucie ekranu widać, że certyfikaty zostały prawidłowo przekopiowane do obrazu. Powinny więc zostać prawidłowo wyświetlane na Jenkins przez adres http://localhost:8080/credentials/, jednak tak się nie dzieje, prawdopodobnie z powodu wcześniej wspomnianych problemów. W związku z tym, iż nie działa podstawowa warstwa niezbędne do prawidłowej realizacji laboratorium, podjąłem decyzję o wstrzymaniu się od realizacji tego laboratorium. Wykonanie tego laboratorium na aktualnym obrazie wymagałoby dużego nakładu pracy związanego z naprawą serwera Jenkins.
