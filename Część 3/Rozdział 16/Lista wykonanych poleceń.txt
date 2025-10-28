@@ -1,0 +1,2 @@
+sudo docker build -t laboratorium16 .
+sudo docker run laboratorium16
