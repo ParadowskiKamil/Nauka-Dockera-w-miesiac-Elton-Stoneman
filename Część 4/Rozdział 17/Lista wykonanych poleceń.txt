@@ -1,0 +1,4 @@
+sudo docker build -f DockerfileLaboratorium -t laboratorium17 .
+sudo docker build -f DockerfileLaboratorium -t laboratorium17 .
+sudo docker container run laboratorium17 docker version
+sudo docker image ls
