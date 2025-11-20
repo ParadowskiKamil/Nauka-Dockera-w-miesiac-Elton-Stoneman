@@ -1,0 +1,28 @@
+services:
+  numbers-api:
+    image: diamol/ch14-numbers-api:v5
+    environment:
+      - Broken=false
+      - Logging__LogLevel__Default=Debug
+    networks:
+      - app-net
+    logging:
+      driver: "fluentd"
+      options:
+        tag: "numbers.api.{{.ImageName}}"
+
+  numbers-web:
+    image: diamol/ch14-numbers-web:v5
+    depends_on:
+      - numbers-api
+    ports:
+      - 8090:80
+    networks:
+      - app-net
+    logging:
+      driver: "fluentd"
+      options:
+        tag: "numbers.web.{{.ImageName}}"
+
+networks:
+  app-net:
