@@ -1,0 +1,11 @@
+server {
+    server_name pi.local;
+
+    location / {
+        proxy_pass             http://pi;
+        proxy_set_header       Host $host;
+        proxy_cache            SHORT;
+        proxy_cache_valid      200 1m;
+        proxy_cache_use_stale  error timeout invalid_header updating http_500 http_502 http_503 http_504;
+    }
+}

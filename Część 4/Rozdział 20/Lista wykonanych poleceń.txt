@@ -1,0 +1,6 @@
+sudo docker compose -f docker-compose-laboratorium20.yml up -d
+echo $'\n127.0.0.1 pi.local' | sudo tee -a /etc/hosts
+sudo docker compose -f nginx/docker-compose-laboratorium20.yml -f nginx/override-linux-laboratorium20.yml up -d
+sudo docker container ls
+sudo docker rm -f LiczbaPi
+sudo docker container ls

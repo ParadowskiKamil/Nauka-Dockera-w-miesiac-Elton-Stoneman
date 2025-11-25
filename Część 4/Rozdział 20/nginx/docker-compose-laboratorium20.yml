@@ -1,0 +1,12 @@
+services:
+  nginx:
+    image: diamol/nginx
+    ports:
+      - "80:80"
+    networks:
+      - application-network
+
+networks:
+  application-network:
+    external: true
+    name: application-network

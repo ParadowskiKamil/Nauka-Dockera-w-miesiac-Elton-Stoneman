@@ -1,0 +1,12 @@
+services:
+  pi:
+    image: diamol/ch20-pi
+    container_name: LiczbaPi
+    ports:
+      - "8031:80"
+    networks:
+      - application-network
+
+networks:
+  application-network:
+    name: application-network
