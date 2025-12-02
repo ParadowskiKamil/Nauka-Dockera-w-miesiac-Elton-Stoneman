@@ -1,0 +1,36 @@
+services:
+  todo-web:
+    image: diamol/ch21-todo-list
+    ports:
+      - 8080:80
+    networks:
+      - application-network
+
+  todo-db:
+    image: diamol/postgres:11.5
+    networks:
+      - application-network
+
+  message-queue:
+    image: diamol/nats
+    ports:
+      - "8222:8222"
+    networks:
+      - application-network
+
+  save-handler:
+    image: diamol/ch21-save-handler
+    environment:
+      - Events__events.todo.itemsaved__Publish=true
+    networks:
+      - application-network
+
+  mutating-handler:
+    image: diamol/ch21-mutating-handler
+    environment:
+      - MessageQueue__Url=nats://message-queue:4222
+    networks:
+      - application-network
+
+networks:
+  application-network:
